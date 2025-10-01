@@ -1,206 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Me Julian wants to switch teams</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julian de Groot — Product-minded Engineer</title>
+<meta name="description" content="A crisp, single-page presentation for Julian de Groot: product-minded engineer showcasing projects, skills, and personality.">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+<!-- SEO & Social -->
+<meta property="og:title" content="Julian de Groot — Product-minded Engineer">
+<meta property="og:description" content="A crisp, single-page presentation for Julian de Groot: projects, skills, and personality.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Julian de Groot — Product-minded Engineer">
+<meta name="twitter:description" content="Projects, skills, and personality in one polished page.">
+<meta name="twitter:image" content="https://example.com/og-image.jpg">
 
-        .container {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 60px 40px;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            animation: fadeInUp 1s ease-out;
-            max-width: 600px;
-            width: 90%;
-        }
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23000'/%3E%3Ctext x='50' y='58' font-size='50' text-anchor='middle' fill='%23fff' font-family='Arial'%3EJ%3C/text%3E%3C/svg%3E">
 
-        .hello-text {
-            font-size: 4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
+<style>
+/* Base reset and tokens */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; color: #0f172a; background: #ffffff; }
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #2563eb;
+  --accent-2: #0ea5e9;
+  --card: #f8fafc;
+  --border: #e2e8f0;
+  --shadow: 0 10px 25px rgba(2, 6, 23, 0.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1020;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #60a5fa;
+    --accent-2: #22d3ee;
+    --card: #0f172a;
+    --border: #1f2937;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+body { background: var(--bg); color: var(--text); }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
+/* Layout */
+.container { max-width: 1024px; margin: 0 auto; padding: 0 20px; }
+header.nav { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--border); backdrop-filter: saturate(180%) blur(8px); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.2px; }
+.brand-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow); }
+.nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-weight: 600; }
+.nav a:hover, .nav a:focus { color: var(--text); }
+.menu-btn { display: none; }
+@media (max-width: 720px) {
+  .menu-btn { display: inline-flex; background: transparent; border: 1px solid var(--border); color: var(--text); padding: 8px 10px; border-radius: 8px; }
+  .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 12px 20px; }
+  .nav-links.open { display: block; }
+  .nav a { display: block; padding: 10px 0; margin: 0; }
+}
 
-        .wave {
-            display: inline-block;
-            animation: wave 1.5s ease-in-out infinite;
-            animation-delay: calc(var(--i) * 0.1s);
-        }
+/* Sections */
+section { padding: 80px 0; }
+section.alt { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+section .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+.eyebrow { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); }
+.h2 { font-size: 28px; margin: 0; }
+.lead { font-size: 18px; color: var(--muted); }
 
-        .wave:nth-child(1) { --i: 1; }
-        .wave:nth-child(2) { --i: 2; }
-        .wave:nth-child(3) { --i: 3; }
-        .wave:nth-child(4) { --i: 4; }
-        .wave:nth-child(5) { --i: 5; }
+/* Hero */
+.hero { padding: 96px 0 64px; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: center; }
+.hero h1 { font-size: 42px; line-height: 1.15; margin: 0 0 12px; }
+.hero p { margin: 0 0 16px; }
+.tagline { font-size: 18px; color: var(--muted); }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); color: var(--text); text-decoration: none; font-weight: 700; }
+.btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: 0; box-shadow: var(--shadow); }
+.avatar { width: 180px; height: 180px; border-radius: 20px; background: linear-gradient(135deg, var(--card), var(--border)); border: 1px solid var(--border); box-shadow: var(--shadow); justify-self: center; }
+@media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } .cta-row { justify-content: center; } }
 
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
+/* Cards */
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+.card { grid-column: span 6; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); }
+.card h3 { margin-top: 0; margin-bottom: 6px; }
+.card p { margin-top: 0; margin-bottom: 12px; color: var(--muted); }
+.chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); font-size: 12px; font-weight: 600; color: var(--muted); }
+@media (max-width: 960px) { .card { grid-column: span 12; } }
 
-        .floating-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 6s ease-in-out infinite;
-        }
+/* Footer */
+footer { padding: 40px 0; color: var(--muted); border-top: 1px solid var(--border); }
+.kudos { font-size: 12px; }
 
-        .floating-circle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
+/* Accessibility helpers */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-        .floating-circle:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .floating-circle:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(238, 90, 36, 0.6);
-        }
-
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes wave {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hello-text {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .container {
-                padding: 40px 20px;
-            }
-        }
-    </style>
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+</style>
 </head>
 <body>
-    <div class="floating-elements">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-    </div>
-    
-    <div class="container">
-        <h1 class="hello-text">“Me Julian wants to switch teams”</h1>
-    </div>
+  <a class="sr-only" href="#main">Skip to content</a>
 
-    <script>
-        // Add some interactive effects
-        document.addEventListener('mousemove', (e) => {
-            const circles = document.querySelectorAll('.floating-circle');
-            circles.forEach((circle, index) => {
-                const speed = (index + 1) * 0.02;
-                const x = (e.clientX * speed) % window.innerWidth;
-                const y = (e.clientY * speed) % window.innerHeight;
-                circle.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        });
-    </script>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <span>Julian de Groot</span>
+      </div>
+      <nav class="nav">
+        <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+        <div id="menu" class="nav-links" role="menu">
+          <a href="#about" role="menuitem">About</a>
+          <a href="#projects" role="menuitem">Projects</a>
+          <a href="#skills" role="menuitem">Skills</a>
+          <a href="#contact" role="menuitem">Contact</a>
+          <a href="#resume" role="menuitem">Résumé</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Product-minded engineer crafting delightful, durable software</h1>
+          <p class="tagline">I blend design sensibility with engineering rigor to ship pragmatic solutions fast.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">See highlight projects</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div>
+          <div class="avatar" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">About</span>
+          <h2 class="h2">Hi, I'm Julian.</h2>
+        </div>
+        <p class="lead">I love building end-to-end: ideation, prototyping, shipping, and iterating with users. I care about crisp UX, clean APIs, and measurable outcomes. I thrive in small teams, ambiguity, and high expectations.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Highlights</span>
+          <h2 class="h2">Selected projects</h2>
+        </div>
+        <div class="grid">
+          <article class="card" aria-labelledby="p1-title">
+            <h3 id="p1-title">Realtime Collaboration Canvas</h3>
+            <p>Designed and implemented a low-latency whiteboard using CRDTs, WebRTC data channels, and canvas rendering with performance profiling.</p>
+            <div class="chip-row">
+              <span class="chip">TypeScript</span>
+              <span class="chip">WebRTC</span>
+              <span class="chip">CRDT</span>
+              <span class="chip">Canvas</span>
+            </div>
+          </article>
+          <article class="card" aria-labelledby="p2-title">
+            <h3 id="p2-title">AI-assisted Code Review</h3>
+            <p>Built a review agent that surfaces risks, missing tests, and style fixes. Integrated with GitHub checks and reduced review time by 35%.</p>
+            <div class="chip-row">
+              <span class="chip">Python</span>
+              <span class="chip">OpenAI</span>
+              <span class="chip">GitHub Apps</span>
+            </div>
+          </article>
+          <article class="card" aria-labelledby="p3-title">
+            <h3 id="p3-title">Checkout Conversion Uplift</h3>
+            <p>Led a cross-functional push that simplified the checkout flow, added A/B tested trust cues, and improved conversion by 12%.</p>
+            <div class="chip-row">
+              <span class="chip">React</span>
+              <span class="chip">Node</span>
+              <span class="chip">Experimentation</span>
+            </div>
+          </article>
+          <article class="card" aria-labelledby="p4-title">
+            <h3 id="p4-title">Data-informed Onboarding</h3>
+            <p>Implemented event instrumentation and a guided onboarding that halved time-to-value for new users.</p>
+            <div class="chip-row">
+              <span class="chip">Analytics</span>
+              <span class="chip">Product</span>
+              <span class="chip">UX Writing</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Toolkit</span>
+          <h2 class="h2">What I work with</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Frontend</h3>
+            <div class="chip-row">
+              <span class="chip">TypeScript</span>
+              <span class="chip">React</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">Tailwind</span>
+              <span class="chip">Accessibility</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Backend</h3>
+            <div class="chip-row">
+              <span class="chip">Node</span>
+              <span class="chip">Python</span>
+              <span class="chip">Postgres</span>
+              <span class="chip">Redis</span>
+              <span class="chip">Auth</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Infra</h3>
+            <div class="chip-row">
+              <span class="chip">AWS</span>
+              <span class="chip">Docker</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">Monitoring</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Product</h3>
+            <div class="chip-row">
+              <span class="chip">Problem framing</span>
+              <span class="chip">User research</span>
+              <span class="chip">A/B testing</span>
+              <span class="chip">Metrics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Next step</span>
+          <h2 class="h2">Let's talk</h2>
+        </div>
+        <p class="lead">Best way to reach me: <a href="mailto:julian@example.com">julian@example.com</a>. I'm happy to share deeper dives, code samples, and references on request.</p>
+        <div class="cta-row">
+          <a class="btn" id="resume" href="#" aria-label="Download résumé (PDF)">Résumé (PDF)</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> Julian de Groot</div>
+      <div class="kudos">Built with semantic HTML, progressive enhancement, and care.</div>
+    </div>
+  </footer>
+
+  <script>
+  (function() {
+    // Mobile menu toggle
+    var btn = document.querySelector('.menu-btn');
+    var links = document.getElementById('menu');
+    if (btn && links) {
+      btn.addEventListener('click', function() {
+        var isOpen = links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+    // Year
+    var y = document.getElementById('year');
+    if (y) { y.textContent = new Date().getFullYear(); }
+  })();
+  </script>
 </body>
 </html>
-
